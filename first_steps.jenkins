@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage("First step") {
             steps {
-                sh 'ssh root@ub1 \'hostname\''
+                sh 'ssh -p 52478 root@ub1 \'hostname\''
             }
         }
         stage("Second step") {
@@ -21,5 +21,10 @@ pipeline {
                 sh 'ssh -p 52478 root@ub1 \'uptime\''
             }
         }
+        stage("Next step") {
+             steps {
+                sh 'ssh -p 52478 root@ub1 \'df -h\''
+            }
+	}
     }
 }
